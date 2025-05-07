@@ -1,1 +1,19 @@
-# write your code here
+import os
+
+
+def copy_file(command: str) -> None:
+    parts = command.split()
+    if len(parts) != 3 or parts[0] != "cp":
+        print("Invalid command")
+        return
+
+    source_file, destination_file = parts[1], parts[2]
+    if source_file == destination_file:
+        print("Source file cannot be equal to destination file")
+        return
+
+    if not os.path.exists(source_file):
+        return
+
+    with open(source_file, "r") as f1, open(destination_file, "w") as f2:
+        f2.write(f1.read())
