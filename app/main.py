@@ -13,7 +13,8 @@ def copy_file(command: str) -> None:
         return
 
     if not os.path.exists(source_file):
+        print("Source file does not exist")
         return
 
-    with open(source_file, "r") as f1, open(destination_file, "w") as f2:
+    with open(source_file, "rb") as f1, open(destination_file, "wb") as f2:
         f2.write(f1.read())
